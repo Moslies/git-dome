@@ -1,8 +1,16 @@
-//引用系统http模板
-const http = require('http');
-//使用http下的createServer()创建服务器
-const app = http.createServer();
-//监听客户端请求 响应请求
-app.on('request', (req, res) => { res.end() });
-//设置一个端口
+// 引入express框架
+const express = require('express');
+//引入path模板
+const path = require('path');
+//引入body-parser模板
+const bodyParser = require('body-parser')
+    // 创建web服务器
+const app = express();
+//public 静态资源文件访问
+app.use(express.static(path.join(__dirname, 'public')))
+    //用来接收json参数
+app.use(bodyParser.urlencoded({ extended: false }))
+    // 路由
+app.get('/', (req, res) => { res.send(req.query); });
+// 监听端口
 app.listen(3000, () => { console.log('Server running on http://localhost:3000') });
