@@ -5,4 +5,4 @@ const app = http.createServer();
 //监听客户端请求 响应请求
 app.on('request', (req, res) => { res.end() });
 //设置一个端口
-app.listen(3000, () => { console.log('服务器创建成功') });
+app.listen(3000, () => { console.log('Server running on http://localhost:3000') });
